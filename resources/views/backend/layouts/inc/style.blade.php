@@ -9,3 +9,5 @@
  <link href="{{ asset('assets/backend') }}/css/icons.min.css" rel="stylesheet" type="text/css">
  <!-- App Css-->
  <link href="{{ asset('assets/backend') }}/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
+ {{-- //page wise additional Css --}}
+ @stack('admin_style')

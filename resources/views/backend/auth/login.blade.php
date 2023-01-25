@@ -34,15 +34,26 @@
                                 <form class="mt-4" action="{{ route('admin.login') }}" method="POST">
                                     @csrf
                                     <div class="mb-3">
-                                        <label class="form-label" for="email">User Email</label>
-                                        <input type="text" class="form-control" id="email" name="email"
-                                            placeholder="Enter email">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="text" name="email"
+                                            class="form-control @error('email') is-invalid @enderror" id="">
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label" for="userpassword">Password</label>
-                                        <input type="password" class="form-control" id="userpassword" name="password"
-                                            placeholder="Enter password">
+                                        <label class="form-label" for="password">Password</label>
+                                        <input type="password"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            id="userpassword" name="password" placeholder="Enter password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3 row">

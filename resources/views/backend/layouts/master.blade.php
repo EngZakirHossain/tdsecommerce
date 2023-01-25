@@ -30,6 +30,22 @@
 
             <div class="page-content">
                 <div class="container-fluid">
+                    <!-- start page title -->
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h6 class="page-title">@yield('page_title')</h6>
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">@yield('page_title')</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                    <!-- end page title -->
                     @yield('admin_content')
 
                     @include('backend.layouts.inc.footer')

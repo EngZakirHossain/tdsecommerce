@@ -16,3 +16,6 @@
 <script src="{{ asset('assets/backend') }}/js/pages/dashboard.init.js"></script>
 
 <script src="{{ asset('assets/backend') }}/js/app.js"></script>
+
+{{-- page additional script --}}
+@stack('admin_script')
