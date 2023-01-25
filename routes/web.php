@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Backend\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('backend.pages.dashboard');
+// Admin Auth Route
+
+Route::group(['prefix' => 'admin/', 'as' => 'admin.'],function(){
+    Route::get('login',[LoginController::class, 'loginPage'])->name('loginpage');
+    Route::post('login',[LoginController::class, 'login'])->name('login');
+    Route::get('logout',[LoginController::class, 'logout'])->name('logout');
+
+    Route::middleware('auth')->group(function(){
+        Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+    });
 });
+
+
+// End Admin Auth Route
+
 
 Route::get('/', function () {
     return view('frontend.pages.home');
