@@ -20,12 +20,18 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form class="row g-3 " action="{{ route('admin.category.store') }}" method="POST">
+                    <form class="row g-3 needs-validation" action="{{ route('admin.category.store') }}" method="POST">
                         @csrf
                         <!-- end col -->
                         <div class="col-md-6">
                             <label for="name" class="form-label">Name Of Category</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                                name="name" required>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <!-- end col -->
                         <div class="col-12">
@@ -71,15 +77,18 @@
                         <tbody>
                             @foreach ($categories as $key => $category)
                                 <tr>
-                                    <td>{{ $categories->firstItem() + $loop->index }}</td>
+                                    <td>{{ $key + 1 }}</td>
                                     <td>{{ $category->updated_at->format('d M y') }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->slug }}</td>
-                                    <td>Edit</td>
-                                </tr>
-                            @endforeach
-
-
+                                    <td>
+                                        <div class="btn-group me-2 mb-2 mb-sm-0" "="">
+                                            <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-inbox"></i></button>
+                                            <button type="button" class="btn btn-primary waves-light waves-effect"><i class="far fa-trash-alt"></i></button>
+                                        </div>
+                                        </td>
+                                    </tr>
+     @endforeach
                         </tbody>
                     </table>
 

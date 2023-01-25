@@ -18,7 +18,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest('id')->select(['id','name','slug','updated_at'])->paginate();
+        $categories = Category::query()->latest('id')->select(['id','name','slug','updated_at'])->get();
         return view('backend.pages.category.index',compact('categories'));
     }
 
