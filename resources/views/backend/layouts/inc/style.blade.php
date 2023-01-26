@@ -10,4 +10,6 @@
  <!-- App Css-->
  <link href="{{ asset('assets/backend') }}/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
  {{-- //page wise additional Css --}}
+ <!-- toastr Alert-->
+ <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
  @stack('admin_style')

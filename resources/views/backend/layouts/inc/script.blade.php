@@ -16,6 +16,9 @@
 <script src="{{ asset('assets/backend') }}/js/pages/dashboard.init.js"></script>
 
 <script src="{{ asset('assets/backend') }}/js/app.js"></script>
+<!-- toastr alert init js-->
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+{!! Toastr::message() !!}
 
 {{-- page additional script --}}
 @stack('admin_script')

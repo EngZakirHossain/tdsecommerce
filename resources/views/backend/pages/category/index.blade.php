@@ -12,6 +12,9 @@
     <!-- Responsive datatable examples -->
     <link href="{{ asset('assets/backend') }}/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
         rel="stylesheet" type="text/css">
+    <!-- Sweet Alert-->
+    <link href="{{ asset('assets/backend') }}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    
 @endpush
 
 @section('admin_content')
@@ -67,9 +70,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Updated At</th>
                                 <th>Name</th>
                                 <th>Slug</th>
+                                <th>Updated At</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -78,17 +81,19 @@
                             @foreach ($categories as $key => $category)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ $category->updated_at->format('d M y') }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->slug }}</td>
+                                    <td>{{ $category->updated_at->format('d M y') }}</td>
                                     <td>
-                                        <div class="btn-group me-2 mb-2 mb-sm-0" "="">
-                                            <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-inbox"></i></button>
-                                            <button type="button" class="btn btn-primary waves-light waves-effect"><i class="far fa-trash-alt"></i></button>
+                                        <div class="btn-group me-2 mb-2 mb-sm-0">
+                                            <button type="button" class="btn btn-primary waves-light waves-effect"><i
+                                                    class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-primary waves-effect waves-light"
+                                                id="sa-warning"><i class="far fa-trash-alt"></i></button>
                                         </div>
-                                        </td>
-                                    </tr>
-     @endforeach
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
@@ -105,9 +110,6 @@
     <!-- Buttons examples -->
     <script src="{{ asset('assets/backend') }}/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
     <script src="{{ asset('assets/backend') }}/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-    <script src="{{ asset('assets/backend') }}/libs/jszip/jszip.min.js"></script>
-    <script src="{{ asset('assets/backend') }}/libs/pdfmake/build/pdfmake.min.js"></script>
-    <script src="{{ asset('assets/backend') }}/libs/pdfmake/build/vfs_fonts.js"></script>
     <script src="{{ asset('assets/backend') }}/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
     <script src="{{ asset('assets/backend') }}/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
     <script src="{{ asset('assets/backend') }}/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
@@ -119,5 +121,10 @@
     <!-- Datatable init js -->
     <script src="{{ asset('assets/backend') }}/js/pages/datatables.init.js"></script>
 
-    <script src="assets/js/app.js"></script>
+    <!-- Sweet Alerts js -->
+    <script src="{{ asset('assets/backend') }}/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- Sweet alert init js-->
+    <script src="{{ asset('assets/backend') }}/js/pages/sweet-alerts.init.js"></script>
+
 @endpush

@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryStoreRequest;
 use PhpParser\Node\Stmt\Return_;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
+use App\Http\Requests\CategoryStoreRequest;
 
 class CategoryController extends Controller
 {
@@ -46,6 +47,8 @@ class CategoryController extends Controller
         'slug'=>Str::slug($request->name) ,
         'is_active'=>$request->filled('is_active'),
       ]);
+
+      Toastr::success('Data Store Successfully');
         return back();
 
     }
