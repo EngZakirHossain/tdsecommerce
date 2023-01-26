@@ -9,6 +9,7 @@ use PhpParser\Node\Stmt\Return_;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 
 class CategoryController extends Controller
 {
@@ -41,7 +42,6 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-
         Category::create([
         'name'=>$request->name,
         'slug'=>Str::slug($request->name) ,
@@ -70,9 +70,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $category = Category::whereSlug($slug)->first();
+        return $category;
     }
 
     /**
@@ -82,9 +83,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryUpdateRequest $request, $slug)
     {
-        //
+        $category = Category::whereSlug($slug)->first();
+        $category ->update([
+        'name'=>$request->name,
+        'slug'=>Str::slug($request->name) ,
+        'is_active'=>$request->filled('is_active'),
+      ]);
+
+      Toastr::success('Data Updated Successfully');
+      return back();
     }
 
     /**
@@ -93,8 +102,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+       $category = Category::whereSlug($slug)->delete();
+        Toastr::success('Data Delete Successfully');
+        return back();
     }
 }

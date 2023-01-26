@@ -23,8 +23,9 @@ class CategoryUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+       return [
+            'name' => 'bail|required|regex:/^[a-zA-Z]+$/u|max:255',
+            'is_active' => 'nullable',
         ];
     }
 }

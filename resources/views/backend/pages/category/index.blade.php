@@ -14,7 +14,6 @@
         rel="stylesheet" type="text/css">
     <!-- Sweet Alert-->
     <link href="{{ asset('assets/backend') }}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-    
 @endpush
 
 @section('admin_content')
@@ -39,11 +38,11 @@
                         <!-- end col -->
                         <div class="col-12">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="is_active" id="is_active">
-                                <label class="form-check-label" for="is_active">
-                                    Is Active
-                                </label>
+                                <input class="form-check form-switch" name="is_active" type="checkbox" id="switch3"
+                                    switch="bool">
+                                <label class="form-label" for="switch3" data-on-label="Yes" data-off-label="No"></label>
                             </div>
+
                         </div>
                         <!-- end col -->
                         <div class="col-12">
@@ -86,10 +85,21 @@
                                     <td>{{ $category->updated_at->format('d M y') }}</td>
                                     <td>
                                         <div class="btn-group me-2 mb-2 mb-sm-0">
-                                            <button type="button" class="btn btn-primary waves-light waves-effect"><i
-                                                    class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-primary waves-effect waves-light"
-                                                id="sa-warning"><i class="far fa-trash-alt"></i></button>
+                                            <a href="{{ route('admin.category.edit', $category->slug) }}" type="button"
+                                                class="btn btn-primary waves-light waves-effect">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <form method="POST"
+                                                action="{{ route('admin.category.destroy', $category->slug) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="button"
+                                                    class="btn btn-primary waves-effect waves-light show_confirm"
+                                                    id="sa-warning">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+
                                         </div>
                                     </td>
                                 </tr>
@@ -127,4 +137,29 @@
     <!-- Sweet alert init js-->
     <script src="{{ asset('assets/backend') }}/js/pages/sweet-alerts.init.js"></script>
 
+    <script src="{{ asset('assets/backend') }}/js/pages/form-advanced.init.js"></script>
+
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            let form = $(this).closest("form");
+            event.preventDefault();
+            Swal.fire({
+                    title: `Are you sure ?`,
+                    text: "You won't able to revert this !",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                        Swal.fire(
+                            'Deleted',
+                            'your File Has Been Deleted',
+                            'success'
+                        )
+                    }
+                });
+        });
+    </script>
 @endpush
