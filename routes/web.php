@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\TestimonialControlller;
@@ -35,6 +36,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'],function(){
 // End Admin Auth Route
 
 
-Route::get('/', function () {
-    return view('frontend.pages.home');
+Route::prefix('')->group(function(){
+    Route::get('/',[HomeController::class,'home'])->name('home');
+
 });
