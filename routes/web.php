@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\TestimonialControlller;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'],function(){
         Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
     });
     Route::resource('/category',CategoryController::class);
+    Route::resource('/testimonial',TestimonialControlller::class);
 });
 
 

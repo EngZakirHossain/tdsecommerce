@@ -1,6 +1,6 @@
 @extends('backend.layouts.master').
-@section('title', 'Category')
-@section('page_title', 'Category')
+@section('title', 'Testimonial')
+@section('page_title', 'Testimonial')
 
 @push('admin_style')
     <!-- DataTables -->
@@ -22,50 +22,14 @@
     <div class="col-md-4">
         <div class="float-end d-none d-md-block">
             <div class="dropdown">
-                <a class="btn btn-primary" href="{{ route('admin.category.create') }}"><i class="mdi mdi-cog me-2"></i>
+                <a class="btn btn-primary" href="{{ route('admin.testimonial.create') }}"><i
+                        class="mdi mdi-android-messages me-2"></i>
                     Add New
                 </a>
             </div>
         </div>
     </div>
 @endsection
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-body">
-                <form class="row g-3 needs-validation" action="{{ route('admin.category.store') }}" method="POST">
-                    @csrf
-                    <!-- end col -->
-                    <div class="col-md-6">
-                        <label for="name" class="form-label">Name Of Category</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                            name="name" required>
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <!-- end col -->
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check form-switch" name="is_active" type="checkbox" id="switch3"
-                                switch="bool">
-                            <label class="form-label" for="switch3" data-on-label="Yes" data-off-label="No"></label>
-                        </div>
-
-                    </div>
-                    <!-- end col -->
-                    <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Add Category</button>
-                    </div>
-                    <!-- end col -->
-                </form><!-- end form -->
-            </div><!-- end cardbody -->
-        </div><!-- end card -->
-    </div>
-</div>
-
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -75,29 +39,34 @@
 
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Slug</th>
+                            <th>SN</th>
+                            <th>Image</th>
+                            <th>Client Name</th>
+                            <th>Client Designation</th>
                             <th>Updated At</th>
                             <th>Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($categories as $key => $category)
+                        @foreach ($testimonials as $key => $testimonial)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->slug }}</td>
-                                <td>{{ $category->updated_at->format('d M y') }}</td>
+                                <td>
+                                    <img src="{{ asset('uploads/testimonials') }}/{{ $testimonial->client_image }}"
+                                        alt="{{ $testimonial->client_name }}" class="img-fluid rounded-circle">
+                                </td>
+                                <td>{{ $testimonial->client_name }}</td>
+                                <td>{{ $testimonial->client_designation }}</td>
+                                <td>{{ $testimonial->updated_at->format('d M y') }}</td>
                                 <td>
                                     <div class="btn-group me-2 mb-2 mb-sm-0">
-                                        <a href="{{ route('admin.category.edit', $category->slug) }}" type="button"
-                                            class="btn btn-primary waves-effect waves-light ">
+                                        <a href="{{ route('admin.testimonial.edit', $testimonial->client_name_slug) }}"
+                                            type="button" class="btn btn-primary waves-effect waves-light ">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <form method="POST"
-                                            action="{{ route('admin.category.destroy', $category->slug) }}">
+                                            action="{{ route('admin.testimonial.destroy', $testimonial->client_name_slug) }}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button"

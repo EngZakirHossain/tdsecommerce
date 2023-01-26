@@ -26,6 +26,17 @@
                         <li><a href="{{ route('admin.category.index') }}">All Category</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ti-receipt"></i>
+                        <span>Testimonial</span>
+                    </a>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.testimonial.create') }}">Create Testimonial</a></li>
+                        <li><a href="{{ route('admin.testimonial.index') }}">All Testimonial</a></li>
+                    </ul>
+                </li>
 
             </ul>
         </div>

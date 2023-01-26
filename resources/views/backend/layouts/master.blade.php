@@ -42,6 +42,7 @@
                                     <li class="breadcrumb-item active" aria-current="page">@yield('page_title')</li>
                                 </ol>
                             </div>
+                            @yield('add_button')
                         </div>
                     </div>
                     <!-- end page title -->
