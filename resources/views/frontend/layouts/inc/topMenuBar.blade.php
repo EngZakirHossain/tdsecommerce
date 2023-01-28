@@ -36,27 +36,28 @@
                                    <div class="submenu-transform submenu-transform-desktop">
                                        <div class="container">
                                            <ul class="submenu megamenu-container list-unstyled">
-                                               @foreach ($categories as $category)
+                                               @foreach (\App\CPU\CategoryManager::parents() as $category)
                                                    <li class="menu-list-item nav-item-sub">
                                                        <div class="mega-menu-header">
                                                            <a class="nav-link-sub nav-text-sub megamenu-heading"
-                                                               href="collection-left-sidebar.html">
+                                                               href="#">
+                                                               {{-- href="{{ route('category-ajax', $category->id) }}"> --}}
                                                                {{ $category->name }}
                                                            </a>
                                                        </div>
                                                        <div class="submenu-transform megamenu-transform">
                                                            <ul class="megamenu list-unstyled">
-                                                               <li class="menu-list-item nav-item-sub">
-                                                                   <a class="nav-link-sub nav-text-sub"
-                                                                       href="collection-left-sidebar.html">With Left
-                                                                       Sidebar</a>
-                                                               </li>
+                                                               @foreach (\App\CPU\CategoryManager::child($category->id) as $subCategory)
+                                                                   <li class="menu-list-item nav-item-sub">
+                                                                       <a class="nav-link-sub nav-text-sub"
+                                                                           href="#">{{ $subCategory->name }}</a>
+                                                                       {{-- href="{{ route('category-ajax', $subCategory->id) }}">{{ $subCategory->name }}</a> --}}
+                                                                   </li>
+                                                               @endforeach
                                                            </ul>
                                                        </div>
                                                    </li>
                                                @endforeach
-
-
                                                <li class="menu-list-item nav-item-sub">
                                                    <div
                                                        class="mega-menu-header d-flex align-items-center justify-content-between">

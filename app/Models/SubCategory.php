@@ -16,6 +16,6 @@ class SubCategory extends Model
     //Every Sub Cat belogns to category
     public function category()
     {
-       return $this->belongsTo(Category::class)->orderBy('priority','desc');
+       return $this->belongsTo(Category::class);
     }
 }

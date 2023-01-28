@@ -13,10 +13,7 @@ class HomeController extends Controller
         $testimonials = Testimonial::where('is_active',1)->latest('id')->limit(3)
         ->select(['id','client_name','client_designation','client_message','client_image'])
         ->get();
-        //Product Category
-        $categories = Category::where('is_active',1)->latest('id')->limit(3)
-        ->select(['id','name','slug'])
-        ->get();
-        return view('frontend.pages.home',compact('testimonials','categories'));
+
+        return view('frontend.pages.home',compact('testimonials'));
     }
 }

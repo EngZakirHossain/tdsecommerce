@@ -13,44 +13,6 @@
                                  <a class="nav-link active" href="index.html">
                                      Home
                                  </a>
-                                 <span class="open-submenu">
-                                     <svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg" width="24"
-                                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                         <polyline points="9 18 15 12 9 6"></polyline>
-                                     </svg>
-                                 </span>
-                             </div>
-                             <div class="submenu-transform submenu-transform-desktop">
-                                 <div class="offcanvas-header border-btm-black">
-                                     <h5 class="drawer-heading btn-menu-back d-flex align-items-center">
-                                         <svg class="icon icon-menu-back" xmlns="http://www.w3.org/2000/svg"
-                                             width="40" height="40" viewBox="0 0 24 24" fill="none"
-                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                             stroke-linejoin="round">
-                                             <polyline points="15 18 9 12 15 6"></polyline>
-                                         </svg>
-                                         <span class="menu-back-text">Home</span>
-                                     </h5>
-                                 </div>
-                                 <ul class="submenu list-unstyled">
-                                     <li class="menu-list-item nav-item-sub"><a class="nav-link-sub nav-text-sub"
-                                             href="index.html">Home
-                                             1</a>
-                                     </li>
-                                     <li class="menu-list-item nav-item-sub"><a class="nav-link-sub nav-text-sub"
-                                             href="index-shoe.html">Home
-                                             2</a>
-                                     </li>
-                                     <li class="menu-list-item nav-item-sub"><a class="nav-link-sub nav-text-sub"
-                                             href="index-bag.html">Home
-                                             3</a>
-                                     </li>
-                                     <li class="menu-list-item nav-item-sub"><a class="nav-link-sub nav-text-sub"
-                                             href="index-tools.html">Home
-                                             4</a>
-                                     </li>
-                                 </ul>
                              </div>
                          </li>
                          <li class="menu-list-item nav-item has-megamenu">
@@ -80,181 +42,48 @@
                                          </h5>
                                      </div>
                                      <ul class="submenu megamenu-container list-unstyled">
-                                         <li class="menu-list-item nav-item-sub">
-                                             <div class="mega-menu-header">
-                                                 <a class="nav-link-sub nav-text-sub megamenu-heading"
-                                                     href="collection-left-sidebar.html">
-                                                     Category Pages
-                                                 </a>
-                                                 <span class="open-submenu">
-                                                     <svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg"
-                                                         width="24" height="24" viewBox="0 0 24 24"
-                                                         fill="none" stroke="currentColor" stroke-width="2"
-                                                         stroke-linecap="round" stroke-linejoin="round">
-                                                         <polyline points="9 18 15 12 9 6"></polyline>
-                                                     </svg>
-                                                 </span>
-                                             </div>
-                                             <div class="submenu-transform">
-                                                 <div class="offcanvas-header border-btm-black">
-                                                     <h5
-                                                         class="drawer-heading btn-menu-back d-flex align-items-center">
-                                                         <svg class="icon icon-menu-back"
-                                                             xmlns="http://www.w3.org/2000/svg" width="40"
-                                                             height="40" viewBox="0 0 24 24" fill="none"
+                                         @foreach (\App\CPU\CategoryManager::parents() as $category)
+                                             <li class="menu-list-item nav-item-sub">
+                                                 <div class="mega-menu-header">
+                                                     <a class="nav-link-sub nav-text-sub megamenu-heading"
+                                                         href="collection-left-sidebar.html">
+                                                        {{ $category->name }}
+                                                     </a>
+                                                     <span class="open-submenu">
+                                                         <svg class="icon icon-dropdown"
+                                                             xmlns="http://www.w3.org/2000/svg" width="24"
+                                                             height="24" viewBox="0 0 24 24" fill="none"
                                                              stroke="currentColor" stroke-width="2"
                                                              stroke-linecap="round" stroke-linejoin="round">
-                                                             <polyline points="15 18 9 12 15 6"></polyline>
+                                                             <polyline points="9 18 15 12 9 6"></polyline>
                                                          </svg>
-                                                         <span class="menu-back-text">Category Pages</span>
-                                                     </h5>
+                                                     </span>
                                                  </div>
-                                                 <ul class="megamenu list-unstyled megamenu-container">
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="collection-left-sidebar.html">With Left
-                                                             Sidebar</a>
-                                                     </li>
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="collection-right-sidebar.html">With Right
-                                                             Sidebar</a>
-                                                     </li>
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="collection-left-sidebar.html">3 Column
-                                                             Layout</a>
-                                                     </li>
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="collection-without-sidebar.html">4 Column
-                                                             Layout</a>
-                                                     </li>
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="collection-without-sidebar.html">Without
-                                                             Sidebar</a>
-                                                     </li>
-                                                 </ul>
-                                             </div>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
-                                             <div class="mega-menu-header">
-                                                 <a class="nav-link-sub nav-text-sub megamenu-heading"
-                                                     href="index.html">
-                                                     Product Pages
-                                                 </a>
-                                                 <span class="open-submenu">
-                                                     <svg class="icon icon-dropdown"
-                                                         xmlns="http://www.w3.org/2000/svg" width="24"
-                                                         height="24" viewBox="0 0 24 24" fill="none"
-                                                         stroke="currentColor" stroke-width="2"
-                                                         stroke-linecap="round" stroke-linejoin="round">
-                                                         <polyline points="9 18 15 12 9 6"></polyline>
-                                                     </svg>
-                                                 </span>
-                                             </div>
-                                             <div class="submenu-transform">
-                                                 <div class="offcanvas-header border-btm-black">
-                                                     <h5
-                                                         class="drawer-heading btn-menu-back d-flex align-items-center">
-                                                         <svg class="icon icon-menu-back"
-                                                             xmlns="http://www.w3.org/2000/svg" width="40"
-                                                             height="40" viewBox="0 0 24 24" fill="none"
-                                                             stroke="currentColor" stroke-width="2"
-                                                             stroke-linecap="round" stroke-linejoin="round">
-                                                             <polyline points="15 18 9 12 15 6"></polyline>
-                                                         </svg>
-                                                         <span class="menu-back-text">Product Pages</span>
-                                                     </h5>
+                                                 <div class="submenu-transform">
+                                                     <div class="offcanvas-header border-btm-black">
+                                                         <h5
+                                                             class="drawer-heading btn-menu-back d-flex align-items-center">
+                                                             <svg class="icon icon-menu-back"
+                                                                 xmlns="http://www.w3.org/2000/svg" width="40"
+                                                                 height="40" viewBox="0 0 24 24" fill="none"
+                                                                 stroke="currentColor" stroke-width="2"
+                                                                 stroke-linecap="round" stroke-linejoin="round">
+                                                                 <polyline points="15 18 9 12 15 6"></polyline>
+                                                             </svg>
+                                                             <span class="menu-back-text">{{ $category->name }}</span>
+                                                         </h5>
+                                                     </div>
+                                                     <ul class="megamenu list-unstyled megamenu-container">
+                                                         @foreach (\App\CPU\CategoryManager::child($category->id) as $subCategory)
+                                                             <li class="menu-list-item nav-item-sub">
+                                                                 <a class="nav-link-sub nav-text-sub"
+                                                                     href="collection-left-sidebar.html">{{ $subCategory->name }}</a>
+                                                             </li>
+                                                         @endforeach
+                                                     </ul>
                                                  </div>
-                                                 <ul class="megamenu list-unstyled">
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="product.html">Simple Product</a>
-                                                     </li>
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="product.html">Variable Product</a>
-                                                     </li>
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub" href="product.html">Sale
-                                                             Product</a>
-                                                     </li>
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="product.html">Featured & On Sale</a>
-                                                     </li>
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="product-2.html">Tab
-                                                             Inside</a>
-                                                     </li>
-                                                 </ul>
-                                             </div>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
-                                             <div class="mega-menu-header">
-                                                 <a class="nav-link-sub nav-text-sub megamenu-heading"
-                                                     href="index.html">
-                                                     Product Layouts
-                                                 </a>
-                                                 <span class="open-submenu">
-                                                     <svg class="icon icon-dropdown"
-                                                         xmlns="http://www.w3.org/2000/svg" width="24"
-                                                         height="24" viewBox="0 0 24 24" fill="none"
-                                                         stroke="currentColor" stroke-width="2"
-                                                         stroke-linecap="round" stroke-linejoin="round">
-                                                         <polyline points="9 18 15 12 9 6"></polyline>
-                                                     </svg>
-                                                 </span>
-                                             </div>
-                                             <div class="submenu-transform">
-                                                 <div class="offcanvas-header border-btm-black">
-                                                     <h5
-                                                         class="drawer-heading btn-menu-back d-flex align-items-center">
-                                                         <svg class="icon icon-menu-back"
-                                                             xmlns="http://www.w3.org/2000/svg" width="40"
-                                                             height="40" viewBox="0 0 24 24" fill="none"
-                                                             stroke="currentColor" stroke-width="2"
-                                                             stroke-linecap="round" stroke-linejoin="round">
-                                                             <polyline points="15 18 9 12 15 6"></polyline>
-                                                         </svg>
-                                                         <span class="menu-back-text">Product Layouts</span>
-                                                     </h5>
-                                                 </div>
-                                                 <ul class="megamenu list-unstyled">
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="product-2.html">Grid Images</a>
-                                                     </li>
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="product.html">Vertical Thumb</a>
-                                                     </li>
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="product.html">Gallery Type</a>
-                                                     </li>
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="product.html">Product Width Layout</a>
-                                                     </li>
-                                                     <li class="menu-list-item nav-item-sub">
-                                                         <a class="nav-link-sub nav-text-sub"
-                                                             href="product.html">Sticky Gallery</a>
-                                                     </li>
-                                                 </ul>
-                                             </div>
-                                         </li>
-                                         <li class="menu-list-item nav-item-sub">
-                                             <div class="mega-menu-header">
-                                                 <a class="nav-link-sub nav-text-sub megamenu-heading"
-                                                     href="collection-left-sidebar.html">
-                                                     Featured Collection
-                                                 </a>
-                                             </div>
-                                         </li>
+                                             </li>
+                                         @endforeach
                                      </ul>
                                  </div>
                              </div>
@@ -268,10 +97,9 @@
                                      Pages
                                  </a>
                                  <span class="open-submenu">
-                                     <svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg"
-                                         width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round">
+                                     <svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                          <polyline points="9 18 15 12 9 6"></polyline>
                                      </svg>
                                  </span>

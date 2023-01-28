@@ -18,6 +18,6 @@ class Category extends Model
 
     //Every Category HasMany sub category
     public function subCategories(){
-        return $this->hasMany(SubCategory::class)->orderBy('priority','desc');
+        return $this->hasMany(SubCategory::class);
     }
 }
