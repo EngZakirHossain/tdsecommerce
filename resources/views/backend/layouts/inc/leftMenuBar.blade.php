@@ -47,7 +47,7 @@
                         <span>Product</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">All Product</a></li>
+                        <li><a href="{{ route('admin.products.index') }}">All Product</a></li>
                     </ul>
                 </li>
 
