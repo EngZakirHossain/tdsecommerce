@@ -24,6 +24,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.category.index') }}">All Category</a></li>
+                        <li><a href="{{ route('admin.subCategory.index') }}">All Sub Category</a></li>
                     </ul>
                 </li>
                 <li>

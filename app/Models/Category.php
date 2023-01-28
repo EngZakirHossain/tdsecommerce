@@ -15,4 +15,9 @@ class Category extends Model
         'slug',
         'is_active',
     ];
+
+    //Every Category HasMany sub category
+    public function subCategories(){
+        return $this->hasMany(SubCategory::class)->orderBy('priority','desc');
+    }
 }

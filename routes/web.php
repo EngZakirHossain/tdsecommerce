@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\TestimonialControlller;
 
 /*
@@ -29,6 +30,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'],function(){
         Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
     });
     Route::resource('/category',CategoryController::class);
+    Route::resource('/subCategory',SubCategoryController::class);
     Route::resource('/testimonial',TestimonialControlller::class);
 });
 
