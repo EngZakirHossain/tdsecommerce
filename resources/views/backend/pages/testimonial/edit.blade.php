@@ -1,5 +1,5 @@
 @extends('backend.layouts.master').
-@section('title', 'Add Testimonial')
+@section('title', 'Edit Testimonial')
 @section('page_title', 'Testimonial')
 
 @push('admin_style')

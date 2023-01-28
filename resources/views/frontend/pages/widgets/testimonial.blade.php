@@ -44,8 +44,9 @@
                                      </p>
                                      <div class="testimonial-reviewer d-flex align-items-center">
                                          <div class="reviewer-img">
-                                             <img src="{{ asset('uploads/testimonials') }}/{{ $testimonial->client_image }}"
-                                                 alt="{{ $testimonial->client_name }}" class="img-fluid rounded-circle">
+                                             <img src="{{ asset('storage/uploads/testimonials') }}/{{ $testimonial->client_image }}"
+                                                 class="img-fluid rounded-circle"
+                                                 onerror="this.src='{{ asset('assets/backend/images/users/avatar.jpg') }}'">
                                          </div>
                                          <div class="reviewer-info ms-4">
                                              <h4 class="reviewer-name heading_18 mb-2 primary-color">

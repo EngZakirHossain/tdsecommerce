@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Image;
+use App\CPU\Helpers;
 use App\Models\Testimonial;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\TestimonialStoreRequest;
 use App\Http\Requests\TestimonialUpdateRequest;
-use Brian2694\Toastr\Facades\Toastr;
-use Image;
 
 class TestimonialControlller extends Controller
 {
@@ -50,7 +52,12 @@ class TestimonialControlller extends Controller
             'client_message' => $request->client_message,
         ]);
 
-        $this->image_upload($request, $testimonial->id);
+
+        $testimonial->update([
+                'client_image' => Helpers::upload('uploads/testimonials/', 'png', $request->file('client_image')),
+        ]);
+
+        // $testimonial->client_image = Helpers::upload('uploads/testimonials/', 'png', $request->file('image'));
 
         Toastr::success('Data Stored Successfully!!');
         return redirect()->route('admin.testimonial.index');
@@ -97,7 +104,9 @@ class TestimonialControlller extends Controller
             'is_active' => $request->filled('is_active')
         ]);
 
-        $this->image_upload($request, $testimonial->id);
+        $testimonial->update([
+                'client_image' => $request->has('client_image') ? Helpers::update('uploads/testimonials/', $testimonial->client_image, 'png', $request->file('client_image')) : $testimonial->client_image,
+        ]);
 
         Toastr::success('Data Updated Successfully!!');
         return redirect()->route('admin.testimonial.index');
@@ -113,38 +122,13 @@ class TestimonialControlller extends Controller
     {
        $testimonial = Testimonial::where('client_name_slug', $slug)->first();
 
-        if($testimonial->client_image){
-            $photo_location = 'uploads/testimonials/'.$testimonial->client_image;
-            unlink($photo_location);
+        if (Storage::disk('public')->exists('uploads/testimonials/' . $testimonial->client_image)) {
+            Storage::disk('public')->delete('uploads/testimonials/' .  $testimonial->client_image);
         }
-
         $testimonial->delete();
 
         Toastr::success('Data Deleted Successfully!!');
         return redirect()->route('admin.testimonial.index');
 
-    }
-    public function image_upload($request, $item_id)
-    {
-
-        $testimonial = Testimonial::findorFail($item_id);
-        //dd($request->all(), $testimonial, $request->hasFile('client_image'));
-        if ($request->hasFile('client_image')) {
-            if ($testimonial->client_image != 'default-client.jpg') {
-                //delete old photo
-                $photo_location = 'public/uploads/testimonials/';
-                $old_photo_location = $photo_location . $testimonial->client_image;
-                unlink(base_path($old_photo_location));
-            }
-            $photo_location = 'public/uploads/testimonials/';
-            $uploaded_photo = $request->file('client_image');
-            $new_photo_name = $testimonial->id . '.' . $uploaded_photo->getClientOriginalExtension();
-            $new_photo_location = $photo_location . $new_photo_name;
-            Image::make($uploaded_photo)->resize(105,105)->save(base_path($new_photo_location), 40);
-            //$user = User::find($category->id);
-            $check = $testimonial->update([
-                'client_image' => $new_photo_name,
-            ]);
-        }
     }
 }

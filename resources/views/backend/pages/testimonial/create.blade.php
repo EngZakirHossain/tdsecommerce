@@ -62,7 +62,7 @@
                 <div class="card">
                     <div class="card-body ">
                         <div class="mb-5">
-                            <label for="client-image" class="form-label">Client Image</label>
+                            <label for="client-image" class="form-label">Client Image (150*150 px)</label>
                             <input type="file" class="form-control dropify" name="client_image" id="">
                             @error('client_image')
                                 <span class="invalid-feedback" role="alert">

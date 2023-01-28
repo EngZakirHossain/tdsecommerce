@@ -53,8 +53,9 @@
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>
-                                    <img src="{{ asset('uploads/testimonials') }}/{{ $testimonial->client_image }}"
-                                        alt="{{ $testimonial->client_name }}" class="img-fluid rounded-circle">
+                                    <img src="{{ asset('storage/uploads/testimonials') }}/{{ $testimonial->client_image }}"
+                                        class="avatar-sm rounded-circle me-2"
+                                        onerror="this.src='{{ asset('assets/backend/images/users/avatar.jpg') }}'">
                                 </td>
                                 <td>{{ $testimonial->client_name }}</td>
                                 <td>{{ $testimonial->client_designation }}</td>
