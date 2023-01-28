@@ -9,6 +9,7 @@ use App\Models\SubCategory;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductStoreRequest;
 use Brian2694\Toastr\Facades\Toastr;
 
 class ProductController extends Controller
@@ -45,7 +46,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
 
         $product = Product::create([
