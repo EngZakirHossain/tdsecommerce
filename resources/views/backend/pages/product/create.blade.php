@@ -150,7 +150,7 @@
                 <div class="card">
                     <div class="card-body ">
                         <div class="mb-5">
-                            <label for="product_thumbnail" class="form-label">Product Thumhnail (150*150 px)</label>
+                            <label for="product_thumbnail" class="form-label">Product Thumhnail (1288*1000 px)</label>
                             <input type="file" class="form-control dropify" name="product_thumbnail" id="">
                             @error('product_thumbnail')
                                 <span class="invalid-feedback" role="alert">
@@ -158,10 +158,12 @@
                                 </span>
                             @enderror
                         </div>
+                        {{--multiple Image Section --}}
                         <div class="mb-5">
-                            <label for="client-image" class="form-label">Product Images (150*150 px)</label>
-                            <input type="file" class="form-control dropify" name="product_image" id="">
-                            @error('product_image')
+                            <label for="product_multiple_image" class="form-label">Product Images (1288*1000 px)</label>
+                            <input type="file" class="form-control dropify" multiple name="product_multiple_image[]"
+                                id="">
+                            @error('product_multiple_image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('subCategory_id')->constrained('sub_categories','id')->onDelete('cascade');
             $table->string('product_name');
-            $table->string('product_slug');
+            $table->string('slug');
             $table->string('product_sku')->unique();
             $table->string('product_size')->nullable();
             $table->unsignedFloat('product_price')->default(0);
@@ -26,7 +26,6 @@ return new class extends Migration
             $table->unsignedInteger('product_alertQuantity')->default(3);
             $table->longText('product_details')->nullable();
             $table->longText('product_shippingDetails')->nullable();
-            $table->string('product_image')->default('default_product.jpg');
             $table->string('product_thumbnail')->default('product_thumbnail.jpg');
             $table->unsignedSmallInteger('product_rating')->nullable()->default(0);
             $table->boolean('is_active')->default(true);

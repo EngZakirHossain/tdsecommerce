@@ -22,7 +22,7 @@ class ProductFactory extends Factory
         return [
             'subCategory_id' =>SubCategory::select('id')->get()->random()->id,
             'product_name' =>$name,
-            'product_slug' =>Str::slug($name),
+            'slug' =>Str::slug($name),
             'product_sku' =>$this->faker->numberBetween(100,100000),
             'product_size' =>$this->faker->numberBetween(1,5),
             'product_price' =>$this->faker->numberBetween(100,1000),
@@ -31,8 +31,7 @@ class ProductFactory extends Factory
             'product_alertQuantity' =>$this->faker->numberBetween(1,10),
             'product_details' =>$this->faker->paragraph(6),
             'product_shippingDetails' =>$this->faker->paragraph(4),
-            'product_image' =>"https:://picsum.photos/200",
-            'product_thumbnail' =>"https:://picsum.photos/200",
+            'product_thumbnail' =>"product.png",
             'product_rating' =>$this->faker->numberBetween(0,5),
         ];
     }

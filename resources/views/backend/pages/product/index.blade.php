@@ -55,7 +55,7 @@
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>
-                                    <img src="{{ asset('storage/uploads/products') }}/{{ $product->product_thumbnail }}"
+                                    <img src="{{ asset('storage/uploads/products/thumbnail') }}/{{ $product->product_thumbnail }}"
                                         class="avatar-sm rounded-circle me-2"
                                         onerror="this.src='{{ asset('assets/backend/images/product/product.png') }}'">
                                 </td>
@@ -67,12 +67,12 @@
                                 <td>{!! str_repeat('<span class="mdi mdi-star text-primary"></span>', 0 + $product->product_rating) !!}</td>
                                 <td>
                                     <div class="btn-group me-2 mb-2 mb-sm-0">
-                                        <a href="{{ route('admin.products.edit', $product->product_slug) }}"
+                                        <a href="{{ route('admin.products.edit', $product->slug) }}"
                                             type="button" class="btn btn-primary waves-effect waves-light ">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <form method="POST"
-                                            action="{{ route('admin.products.destroy', $product->product_slug) }}">
+                                            action="{{ route('admin.products.destroy', $product->slug) }}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button"

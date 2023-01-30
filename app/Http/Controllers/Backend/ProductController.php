@@ -7,10 +7,12 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Support\Str;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductStoreRequest;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ProductStoreRequest;
 
 class ProductController extends Controller
 {
@@ -23,8 +25,8 @@ class ProductController extends Controller
     {
         $products = Product::query()->where('is_active',1)->with('subCategory')
                     ->latest('id')
-                    ->select('id','subCategory_id','product_name','product_slug','product_price','product_stock',
-                    'product_alertQuantity','product_image','product_rating','product_thumbnail')
+                    ->select('id','subCategory_id','product_name','slug','product_price','product_stock',
+                    'product_alertQuantity','product_rating','product_thumbnail')
                     ->get();
         return view('backend.pages.product.index',compact('products'));
     }
@@ -63,8 +65,21 @@ class ProductController extends Controller
             'product_shippingDetails' => $request->product_shippingDetails,
         ]);
         $product->update([
-                'product_thumbnail' => Helpers::upload('uploads/products/', 'png', $request->file('product_thumbnail')),
+                'product_thumbnail' => Helpers::upload('uploads/products/thumbnail/', 'png', $request->file('product_thumbnail')),
         ]);
+
+        if($request->hasFile('product_multiple_image')){
+            foreach($request->file('product_multiple_image') as $singleImage){
+
+                ProductImage::create([
+                    'product_id' => $product->id,
+                    'product_multiple_image' => Helpers::upload('uploads/products/'.$product->id.'/', 'png', $singleImage),
+                 ]);
+            }
+        }else{
+
+        }
+
         Toastr::success('Data Stored Successfully!');
         return redirect()->route('admin.products.index');
     }
@@ -109,8 +124,19 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+
+        $product = Product::whereSlug($slug)->first();
+
+            if (Storage::disk('public')->exists('uploads/product_photos/thumbnail/' . $product->product_thumbnail)) {
+                Storage::disk('public')->delete('uploads/product_photos/thumbnail/' .  $product->product_thumbnail);
+            }
+
+        $product->delete();
+
+        Toastr::success('Data Deleted Successfully!');
+        return redirect()->route('admin.products.index');
+
     }
 }
