@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\ProductUpdateRequest;
 
 class ProductController extends Controller
 {
@@ -48,13 +49,12 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductStoreRequest $request)
-    {
+    public function store(ProductStoreRequest $request)    {
 
         $product = Product::create([
             'subCategory_id' => $request->subCategory_id,
             'product_name' => $request->product_name,
-            'product_slug' => Str::slug($request->product_name),
+            'slug' => Str::slug($request->product_name),
             'product_stock' => $request->product_stock,
             'product_size' => $request->product_size,
             'product_sku' => $request->product_sku,
@@ -101,9 +101,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $product = Product::whereSlug($slug)->first();
+        $subCategories = SubCategory::select(['id','name'])->get();
+        return view('backend.pages.product.edit', compact('subCategories', 'product'));
     }
 
     /**
@@ -113,9 +115,28 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductUpdateRequest $request, $slug)
     {
-        //
+        $product = Product::whereSlug($slug)->first();
+        $product ->update([
+            'subCategory_id' => $request->subCategory_id,
+            'product_name' => $request->product_name,
+            'slug' => Str::slug($request->product_name),
+            'product_stock' => $request->product_stock,
+            'product_size' => $request->product_size,
+            'product_sku' => $request->product_sku,
+            'product_price' => $request->product_price,
+            'product_cost' => $request->product_cost,
+            'product_alertQuantity' => $request->product_alertQuantity,
+            'product_details' => $request->product_details,
+            'product_shippingDetails' => $request->product_shippingDetails,
+            'is_active' => $request->filled('is_active'),
+            'product_thumbnail' => $request->has('product_thumbnail') ? Helpers::update('uploads/products/thumbnail/', $product->product_thumbnail, 'png', $request->file('product_thumbnail')) : $product->product_thumbnail,
+
+        ]);
+
+        Toastr::success('Data Updated Successfully!');
+        return redirect()->route('admin.products.index');
     }
 
     /**
