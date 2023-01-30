@@ -1,4 +1,4 @@
-        <div class="modal fade" tabindex="-1" id="quickview-modal">
+        <div class="modal fade" tabindex="-1" id="quickview-modal{{ $product->slug }}">
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header border-0">
@@ -18,31 +18,7 @@
                                             "asNavFor": ".qv-thumb-slider"
                                         }'>
                                             <div class="img-large-wrapper">
-                                                <img src="{{ asset('assets/frontend') }}/img/products/bags/39.jpg"
-                                                    alt="img">
-                                            </div>
-                                            <div class="img-large-wrapper">
-                                                <img src="{{ asset('assets/frontend') }}/img/products/bags/38.jpg"
-                                                    alt="img">
-                                            </div>
-                                            <div class="img-large-wrapper">
-                                                <img src="{{ asset('assets/frontend') }}/img/products/bags/37.jpg"
-                                                    alt="img">
-                                            </div>
-                                            <div class="img-large-wrapper">
-                                                <img src="{{ asset('assets/frontend') }}/img/products/bags/36.jpg"
-                                                    alt="img">
-                                            </div>
-                                            <div class="img-large-wrapper">
-                                                <img src="{{ asset('assets/frontend') }}/img/products/bags/34.jpg"
-                                                    alt="img">
-                                            </div>
-                                            <div class="img-large-wrapper">
-                                                <img src="{{ asset('assets/frontend') }}/img/products/bags/30.jpg"
-                                                    alt="img">
-                                            </div>
-                                            <div class="img-large-wrapper">
-                                                <img src="{{ asset('assets/frontend') }}/img/products/bags/32.jpg"
+                                                <img src="{{ asset('storage/uploads/products/thumbnail') }}/{{ $product->product_thumbnail }}"
                                                     alt="img">
                                             </div>
                                         </div>
@@ -63,44 +39,8 @@
                                             "asNavFor": ".qv-large-slider"
                                         }'>
                                             <div>
-                                                <div class="img-thumb-wrapper">
-                                                    <img src="{{ asset('assets/frontend') }}/img/products/bags/39.jpg"
-                                                        alt="img">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="img-thumb-wrapper">
-                                                    <img src="{{ asset('assets/frontend') }}/img/products/bags/38.jpg"
-                                                        alt="img">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="img-thumb-wrapper">
-                                                    <img src="{{ asset('assets/frontend') }}/img/products/bags/37.jpg"
-                                                        alt="img">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="img-thumb-wrapper">
-                                                    <img src="{{ asset('assets/frontend') }}/img/products/bags/36.jpg"
-                                                        alt="img">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="img-thumb-wrapper">
-                                                    <img src="{{ asset('assets/frontend') }}/img/products/bags/34.jpg"
-                                                        alt="img">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="img-thumb-wrapper">
-                                                    <img src="{{ asset('assets/frontend') }}/img/products/bags/30.jpg"
-                                                        alt="img">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="img-thumb-wrapper">
-                                                    <img src="{{ asset('assets/frontend') }}/img/products/bags/32.jpg"
+                                                <div class="img-large-wrapper">
+                                                    <img src="{{ asset('storage/uploads/products/thumbnail') }}/{{ $product->product_thumbnail }}"
                                                         alt="img">
                                                 </div>
                                             </div>
@@ -114,52 +54,28 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="product-details ps-lg-4">
                                     <div class="mb-3"><span class="product-availability">In Stock</span></div>
-                                    <h2 class="product-title mb-3">Accesories Lather bag</h2>
+                                    <h2 class="product-title mb-3">{{ $product->product_name }}</h2>
                                     <div class="product-rating d-flex align-items-center mb-3">
                                         <span class="star-rating">
-                                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M15.168 5.77344L10.082 5.23633L8 0.566406L5.91797 5.23633L0.832031 5.77344L4.63086 9.19727L3.57031 14.1992L8 11.6445L12.4297 14.1992L11.3691 9.19727L15.168 5.77344Z"
-                                                    fill="#FFAE00" />
-                                            </svg>
-                                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M15.168 5.77344L10.082 5.23633L8 0.566406L5.91797 5.23633L0.832031 5.77344L4.63086 9.19727L3.57031 14.1992L8 11.6445L12.4297 14.1992L11.3691 9.19727L15.168 5.77344Z"
-                                                    fill="#FFAE00" />
-                                            </svg>
-                                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M15.168 5.77344L10.082 5.23633L8 0.566406L5.91797 5.23633L0.832031 5.77344L4.63086 9.19727L3.57031 14.1992L8 11.6445L12.4297 14.1992L11.3691 9.19727L15.168 5.77344Z"
-                                                    fill="#FFAE00" />
-                                            </svg>
-                                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M15.168 5.77344L10.082 5.23633L8 0.566406L5.91797 5.23633L0.832031 5.77344L4.63086 9.19727L3.57031 14.1992L8 11.6445L12.4297 14.1992L11.3691 9.19727L15.168 5.77344Z"
-                                                    fill="#FFAE00" />
-                                            </svg>
-                                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M15.168 5.77344L10.082 5.23633L8 0.566406L5.91797 5.23633L0.832031 5.77344L4.63086 9.19727L3.57031 14.1992L8 11.6445L12.4297 14.1992L11.3691 9.19727L15.168 5.77344Z"
-                                                    fill="#B2B2B2" />
-                                            </svg>
+                                            {!! str_repeat(
+                                                '<svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                                                                    <path d="M15.168 5.77344L10.082 5.23633L8 0.566406L5.91797 5.23633L0.832031 5.77344L4.63086 9.19727L3.57031 14.1992L8 11.6445L12.4297 14.1992L11.3691 9.19727L15.168 5.77344Z" fill="#FFAE00" />
+                                                                                                                                    </svg>',
+                                                0 + $product->product_rating,
+                                            ) !!}
                                         </span>
-                                        <span class="rating-count ms-2">(22)</span>
+                                        <span class="rating-count ms-2">({{ $product->product_stock }})</span>
                                     </div>
                                     <div class="product-price-wrapper mb-4">
-                                        <span class="product-price regular-price">$24.00</span>
-                                        <del class="product-price compare-price ms-2">$32.00</del>
+                                        <span class="product-price regular-price">${{ $product->product_price }}</span>
+                                        {{-- <del class="product-price compare-price ms-2">$32.00</del> --}}
                                     </div>
                                     <div class="product-sku product-meta mb-1">
-                                        <strong class="label">SKU:</strong> 401
+                                        <strong class="label">SKU:</strong> {{ $product->product_sku }}
                                     </div>
-                                    <div class="product-vendor product-meta mb-3">
+                                    {{-- <div class="product-vendor product-meta mb-3">
                                         <strong class="label">Vendor:</strong> leather
-                                    </div>
+                                    </div> --}}
 
                                     <div class="product-variant-wrapper">
                                         <div class="product-variant product-variant-color">
@@ -200,18 +116,6 @@
                                                 <li class="variant-item">
                                                     <input type="radio" value="34" checked>
                                                     <label class="variant-label">34</label>
-                                                </li>
-                                                <li class="variant-item">
-                                                    <input type="radio" value="36">
-                                                    <label class="variant-label">36</label>
-                                                </li>
-                                                <li class="variant-item">
-                                                    <input type="radio" value="38">
-                                                    <label class="variant-label">38</label>
-                                                </li>
-                                                <li class="variant-item">
-                                                    <input type="radio" value="40">
-                                                    <label class="variant-label">40</label>
                                                 </li>
                                             </ul>
                                         </div>

@@ -48,10 +48,6 @@
         @include('frontend.layouts.inc.cart')
         <!-- drawer cart end -->
 
-        <!-- product quickview start -->
-        @include('frontend.layouts.inc.productQuickView')
-        <!-- product quickview end -->
-
         <!-- newsletter subscribe modal start -->
         {{-- @include('frontend.layouts.inc.newsletter') --}}
         <!-- newsletter subscribe modal end -->
