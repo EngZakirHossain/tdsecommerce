@@ -124,7 +124,8 @@
                                 </div>
                                 <div class="product-card-details text-center">
                                     <h3 class="product-card-title">
-                                        <a href="#">{{ $product->product_name }}</a>
+                                        <a
+                                            href="{{ route('productDetails.page', $product->slug) }}">{{ $product->product_name }}</a>
                                     </h3>
                                     <div class="product-card-price">
                                         <span class="card-price-regular">${{ $product->product_price }}</span>

@@ -54,7 +54,7 @@ class HomeController extends Controller
             ->first();
 
         $related_products = Product::whereNot('slug', $slug)->select('id', 'product_name', 'slug', 'product_price', 'product_thumbnail')
-        ->limit(4)
+        ->limit(8)
         ->get();
         return view('frontend.pages.widgets.singleProduct', compact('product', 'related_products'));
     }
