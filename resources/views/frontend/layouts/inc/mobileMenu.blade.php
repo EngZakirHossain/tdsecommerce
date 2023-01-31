@@ -8,16 +8,18 @@
              <div class="offcanvas-body p-0 d-flex flex-column justify-content-between">
                  <nav class="site-navigation">
                      <ul class="main-menu list-unstyled">
-                         <li class="menu-list-item nav-item has-dropdown active">
+                         <li
+                             class="menu-list-item nav-item has-dropdown @if (request()->routeIs('home')) active @endif">
                              <div class="mega-menu-header">
-                                 <a class="nav-link active" href="index.html">
+                                 <a class="nav-link " href="{{ route('home') }}">
                                      Home
                                  </a>
                              </div>
                          </li>
-                         <li class="menu-list-item nav-item has-megamenu">
+                         <li
+                             class="menu-list-item nav-item has-megamenu @if (request()->routeIs('shop')) active @endif">
                              <div class="mega-menu-header">
-                                 <a class="nav-link" href="{{ route('home') }}">
+                                 <a class="nav-link" href="{{ route('shop') }}">
                                      Shop
                                  </a>
                                  <span class="open-submenu">

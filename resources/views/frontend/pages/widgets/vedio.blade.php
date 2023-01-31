@@ -1,6 +1,6 @@
  <div class="video-section mt-100 overflow-hidden">
      <div class="overlay-furniture section-spacing"
-         style="background: url('./{{ asset('assets/frontend') }}/img/video/video-furniture.jpg') no-repeat fixed bottom center/cover">
+         style="background-image: url({{ asset('assets/frontend/img/video/video-tools.jpg') }}); no-repeat fixed bottom center/cover">
          <div class="container video-container">
              <div class="row">
                  <div class="col-12">

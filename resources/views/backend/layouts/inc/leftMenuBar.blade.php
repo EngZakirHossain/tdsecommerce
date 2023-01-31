@@ -29,6 +29,15 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ti-pie-chart"></i>
+                        <span>Banner</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.banner.index') }}">All Banner</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ti-receipt"></i>
                         <span>Testimonial</span>
                     </a>

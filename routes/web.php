@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\TestimonialControlller;
 
@@ -34,6 +35,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'],function(){
     Route::resource('/subCategory',SubCategoryController::class);
     Route::resource('/testimonial',TestimonialControlller::class);
     Route::resource('/products',ProductController::class);
+    Route::resource('/banner',BannerController::class);
 });
 
 

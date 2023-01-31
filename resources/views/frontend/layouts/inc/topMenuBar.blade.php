@@ -4,7 +4,7 @@
                <div class="row align-items-center">
                    <div class="col-lg-3 col-md-4 col-4">
                        <div class="header-logo">
-                           <a href="{{ route('home') }}" class="logo-main">
+                           <a href="{{ route('home') }}" class="logo-main ">
                                <img src="{{ asset('assets/frontend') }}/img/logo.png" loading="lazy" alt="bisum">
                            </a>
                        </div>
@@ -12,16 +12,18 @@
                    <div class="col-lg-6 d-lg-block d-none">
                        <nav class="site-navigation">
                            <ul class="main-menu list-unstyled justify-content-center">
-                               <li class="menu-list-item nav-item has-dropdown active">
+                               <li
+                                   class="menu-list-item nav-item has-dropdown @if (request()->routeIs('home')) active @endif  ">
                                    <div class="mega-menu-header">
-                                       <a class="nav-link" href="{{ route('home') }}">
+                                       <a class="nav-link active " href="{{ route('home') }}">
                                            Home
                                        </a>
                                    </div>
                                </li>
-                               <li class="menu-list-item nav-item has-megamenu">
+                               <li
+                                   class="menu-list-item nav-item has-megamenu @if (request()->routeIs('shop')) active @endif">
                                    <div class="mega-menu-header">
-                                       <a class="nav-link" href="{{ route('shop') }}">
+                                       <a class="nav-link " href="{{ route('shop') }}">
                                            Shop
                                        </a>
                                        <span class="open-submenu">
