@@ -42,5 +42,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'],function(){
 
 Route::prefix('')->group(function(){
     Route::get('/',[HomeController::class,'home'])->name('home');
+    Route::get('/shop',[HomeController::class,'shop'])->name('shop');
+    Route::get('/single-product/{product_slug}',[HomeController::class,'productDetails'])->name('productDetails.page');
 
 });

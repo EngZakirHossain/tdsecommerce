@@ -17,7 +17,7 @@
                          </li>
                          <li class="menu-list-item nav-item has-megamenu">
                              <div class="mega-menu-header">
-                                 <a class="nav-link" href="collection-left-sidebar.html">
+                                 <a class="nav-link" href="{{ route('home') }}">
                                      Shop
                                  </a>
                                  <span class="open-submenu">
@@ -47,7 +47,7 @@
                                                  <div class="mega-menu-header">
                                                      <a class="nav-link-sub nav-text-sub megamenu-heading"
                                                          href="collection-left-sidebar.html">
-                                                        {{ $category->name }}
+                                                         {{ $category->name }}
                                                      </a>
                                                      <span class="open-submenu">
                                                          <svg class="icon icon-dropdown"

@@ -59,8 +59,8 @@
                                         <span class="star-rating">
                                             {!! str_repeat(
                                                 '<svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                                                                                    <path d="M15.168 5.77344L10.082 5.23633L8 0.566406L5.91797 5.23633L0.832031 5.77344L4.63086 9.19727L3.57031 14.1992L8 11.6445L12.4297 14.1992L11.3691 9.19727L15.168 5.77344Z" fill="#FFAE00" />
-                                                                                                                                    </svg>',
+                                                                                                                                                                                                                                                                        <path d="M15.168 5.77344L10.082 5.23633L8 0.566406L5.91797 5.23633L0.832031 5.77344L4.63086 9.19727L3.57031 14.1992L8 11.6445L12.4297 14.1992L11.3691 9.19727L15.168 5.77344Z" fill="#FFAE00" />
+                                                                                                                                                                                                                                                                        </svg>',
                                                 0 + $product->product_rating,
                                             ) !!}
                                         </span>
@@ -134,8 +134,8 @@
                                         </div>
                                         <div class="message-popup d-flex align-items-center">
                                             <span class="message-popup-icon">
-                                                <svg width="24" height="25" viewBox="0 0 24 25"
-                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M1.5 4.25V16.25H4.5V20.0703L5.71875 19.0859L9.25781 16.25H16.5V4.25H1.5ZM3 5.75H15V14.75H8.74219L8.53125 14.9141L6 16.9297V14.75H3V5.75ZM18 7.25V8.75H21V17.75H18V19.9297L15.2578 17.75H9.63281L7.75781 19.25H14.7422L19.5 23.0703V19.25H22.5V7.25H18Z"
                                                         fill="black" />

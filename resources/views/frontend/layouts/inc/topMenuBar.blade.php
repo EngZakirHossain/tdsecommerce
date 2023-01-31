@@ -21,7 +21,7 @@
                                </li>
                                <li class="menu-list-item nav-item has-megamenu">
                                    <div class="mega-menu-header">
-                                       <a class="nav-link" href="collection-left-sidebar.html">
+                                       <a class="nav-link" href="{{ route('shop') }}">
                                            Shop
                                        </a>
                                        <span class="open-submenu">
