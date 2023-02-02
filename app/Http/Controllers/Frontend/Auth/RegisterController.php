@@ -37,7 +37,7 @@ class RegisterController extends Controller{
         ];
 
         // login attempt if success then redirect home
-        if(Auth::attempt($credentials)){
+        if(Auth::guard('customer')->attempt($credentials)){
             $request->session()->regenerate();
             return redirect()->route('customer.dashboard');
         }
