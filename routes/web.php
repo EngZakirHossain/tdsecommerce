@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\TestimonialControlller;
+use App\Http\Controllers\Frontend\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +47,7 @@ Route::prefix('')->group(function(){
     Route::get('/',[HomeController::class,'home'])->name('home');
     Route::get('/shop',[HomeController::class,'shop'])->name('shop');
     Route::get('/single-product/{product_slug}',[HomeController::class,'productDetails'])->name('productDetails.page');
+    Route::get('/shopping-cart',[CartController::class,'cartPage'])->name('cart.page');
+    Route::post('/add-to-cart',[CartController::class,'addToCart'])->name('addToCart');
 
 });

@@ -161,32 +161,34 @@
                                      </ul>
                                  </div>
                              </div>
-
-                             <div class="misc d-flex align-items-end justify-content-between mt-4">
-                                 <div class="quantity d-flex align-items-center justify-content-between">
-                                     <button class="qty-btn dec-qty"><img
-                                             src="{{ asset('assets/frontend') }}/img/icon/minus.svg"
-                                             alt="minus"></button>
-                                     <input class="qty-input" type="number" name="qty" value="1"
-                                         min="0">
-                                     <button class="qty-btn inc-qty"><img
-                                             src="{{ asset('assets/frontend') }}/img/icon/plus.svg"
-                                             alt="plus"></button>
+                             <form class="product-form" action="{{ route('addToCart') }}" method="post">
+                                 @csrf
+                                 <input type="hidden" name="product_slug" value="{{ $product->slug }}">
+                                 {{-- increment  --}}
+                                 <div class="misc d-flex align-items-end justify-content-between mt-4">
+                                     <div class="quantity d-flex align-items-center justify-content-between">
+                                         <span class="qty-btn dec-qty"><img
+                                                 src="{{ asset('assets/frontend') }}/img/icon/minus.svg"
+                                                 alt="minus"></span>
+                                         <input class="qty-input " type="number" name="order_qty" value="1"
+                                             min="0">
+                                         <span class="qty-btn inc-qty"><img
+                                                 src="{{ asset('assets/frontend') }}/img/icon/plus.svg"
+                                                 alt="plus"></span>
+                                     </div>
+                                     <div class="message-popup d-flex align-items-center">
+                                         <span class="message-popup-icon">
+                                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                 <path
+                                                     d="M1.5 4.25V16.25H4.5V20.0703L5.71875 19.0859L9.25781 16.25H16.5V4.25H1.5ZM3 5.75H15V14.75H8.74219L8.53125 14.9141L6 16.9297V14.75H3V5.75ZM18 7.25V8.75H21V17.75H18V19.9297L15.2578 17.75H9.63281L7.75781 19.25H14.7422L19.5 23.0703V19.25H22.5V7.25H18Z"
+                                                     fill="black" />
+                                             </svg>
+                                         </span>
+                                         <span class="message-popup-text ms-2">Message</span>
+                                     </div>
                                  </div>
-                                 <div class="message-popup d-flex align-items-center">
-                                     <span class="message-popup-icon">
-                                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                             <path
-                                                 d="M1.5 4.25V16.25H4.5V20.0703L5.71875 19.0859L9.25781 16.25H16.5V4.25H1.5ZM3 5.75H15V14.75H8.74219L8.53125 14.9141L6 16.9297V14.75H3V5.75ZM18 7.25V8.75H21V17.75H18V19.9297L15.2578 17.75H9.63281L7.75781 19.25H14.7422L19.5 23.0703V19.25H22.5V7.25H18Z"
-                                                 fill="black" />
-                                         </svg>
-                                     </span>
-                                     <span class="message-popup-text ms-2">Message</span>
-                                 </div>
-                             </div>
-
-                             <form class="product-form" action="#">
+                                 {{-- add to cart --}}
                                  <div class="product-form-buttons d-flex align-items-center justify-content-between mt-4">
                                      <button type="submit" class="position-relative btn-atc btn-add-to-cart loader">ADD
                                          TO CART</button>
@@ -591,7 +593,8 @@
                              <div class="new-item" data-aos="fade-up" data-aos-duration="300">
                                  <div class="product-card">
                                      <div class="product-card-img">
-                                         <a class="hover-switch" href="{{ route('productDetails.page', $product->slug) }}">
+                                         <a class="hover-switch"
+                                             href="{{ route('productDetails.page', $product->slug) }}">
                                              <img class="secondary-img"
                                                  src="{{ asset('storage/uploads/products/thumbnail') }}/{{ $product->product_thumbnail }}"
                                                  alt="product-img"
@@ -601,6 +604,12 @@
                                                  alt="product-img"
                                                  onerror="this.src='{{ asset('assets/backend/images/product/product.png') }}'">
                                          </a>
+                                         <div class="product-card-action product-card-action-2">
+                                             <a href="{{ route('productDetails.page', $product->slug) }}"
+                                                 class="quickview-btn btn-primary" data-bs-toggle="modal">View Details</a>
+                                             <a href="{{ route('productDetails.page', $product->slug) }}"
+                                                 class="addtocart-btn btn-primary">ADD TO CART</a>
+                                         </div>
                                          <a href="wishlist.html" class="wishlist-btn card-wishlist">
                                              <svg class="icon icon-wishlist" width="26" height="22"
                                                  viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -95,7 +95,8 @@
                                                         </svg>
                                                     </a>
 
-                                                    <a href="#" class="action-card action-addtocart">
+                                                    <a href="{{ route('productDetails.page', $product->slug) }}"
+                                                        class="action-card action-addtocart">
                                                         <svg class="icon icon-cart" width="24" height="26"
                                                             viewBox="0 0 24 26" fill="none"
                                                             xmlns="http://www.w3.org/2000/svg">

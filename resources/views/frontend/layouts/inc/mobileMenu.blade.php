@@ -141,7 +141,7 @@
                                          <a class="nav-link-sub nav-text-sub" href="wishlist.html">Wishlist</a>
                                      </li>
                                      <li class="menu-list-item nav-item-sub">
-                                         <a class="nav-link-sub nav-text-sub" href="cart.html">Cart</a>
+                                         <a class="nav-link-sub nav-text-sub" href="{{ route('cart.page') }}">Cart</a>
                                      </li>
                                      <li class="menu-list-item nav-item-sub">
                                          <a class="nav-link-sub nav-text-sub" href="checkout.html">Checkout</a>
