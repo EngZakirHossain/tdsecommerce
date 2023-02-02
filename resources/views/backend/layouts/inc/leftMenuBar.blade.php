@@ -47,6 +47,15 @@
                         <li><a href="{{ route('admin.testimonial.index') }}">All Testimonial</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ti-pie-chart"></i>
+                        <span>Coupon</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.coupon.index') }}">All Coupon</a></li>
+                    </ul>
+                </li>
 
                 <li class="menu-title">Products Detials</li>
 
