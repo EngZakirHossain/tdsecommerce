@@ -10,7 +10,7 @@ class CustomerController extends Controller
 {
     public function dashboard()
     {
-        $customers = Auth::guard('customer');
+        $customers = Auth::user();
         return view('frontend.pages.customer.dashboard',compact('customers'));
     }
 }

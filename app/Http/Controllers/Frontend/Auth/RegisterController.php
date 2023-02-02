@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\CustomerStoreRequest;
-use App\Models\Customer;
 
 
 
@@ -23,7 +23,7 @@ class RegisterController extends Controller{
     }
     public function registerStore(CustomerStoreRequest $request)
     {
-        $Customers = Customer::create([
+        $users = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -37,7 +37,7 @@ class RegisterController extends Controller{
         ];
 
         // login attempt if success then redirect home
-        if(Auth::guard('customer')->attempt($credentials)){
+        if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             return redirect()->route('customer.dashboard');
         }
@@ -57,7 +57,7 @@ class RegisterController extends Controller{
         ];
 
         // login attempt if success then redirect dashboard
-        if(Auth::guard('customer')->attempt($credentials, $request->filled('remember'))){
+        if(Auth::attempt($credentials, $request->filled('remember'))){
             $request->session()->regenerate();
             return redirect()->intended('customer/dashboard');
         }
@@ -74,7 +74,7 @@ class RegisterController extends Controller{
         Auth::logout();
 
         $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        // $request->session()->regenerateToken();
 
         return redirect()->route('login.page');
     }

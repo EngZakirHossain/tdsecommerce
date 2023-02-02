@@ -16,6 +16,7 @@
             <div class="col-lg-3 d-lg-block d-none">
                 <div class="announcement-meta-wrapper d-flex align-items-center justify-content-end">
                     <div class="announcement-meta d-flex align-items-center">
+
                         <a class="announcement-login announcement-text text-white" href="{{ route('login.page') }}">
                             <svg class="icon icon-user" width="10" height="11" viewBox="0 0 10 11" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +53,7 @@
                             </button>
 
                             <ul class="currency-list dropdown-menu dropdown-menu-end px-2">
-                                @auth('customer')
+                                @auth
                                     <li class="currency-list-item ">
                                         <a class="nav-link-sub nav-text-sub mt-2" href="{{route('cart.page')}}" data-value="USD">
                                             <svg class="icon icon-user" width="10" height="11" viewBox="0 0 10 11"

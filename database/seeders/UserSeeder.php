@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             'is_system_admin' =>1,
             'name' =>'admin',
             'email' =>'admin@gmail.com',
+            'phone' =>'01718297506',
             'password' =>Hash::make(123456789),
             'remember_token' =>Str::random(10),
         ]);
