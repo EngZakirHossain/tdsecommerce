@@ -35,6 +35,7 @@
                                             </td>
                                             <td class="cart-item-details">
                                                 <h2 class="product-title"><a href="#">{{ $cartItem->name }}</a></h2>
+                                                <p class="product-vendor">${{ $cartItem->price }} x {{ $cartItem->qty }}</p>
                                             </td>
                                             <td class="cart-item-quantity">
                                                 <div class="quantity d-flex align-items-center justify-content-between">
@@ -47,7 +48,8 @@
                                                             src="{{ asset('assets/frontend') }}/img/icon/plus.svg"
                                                             alt="plus"></button>
                                                 </div>
-                                                <a href="#" class="product-remove mt-2">Remove</a>
+                                                <a href="{{ route('removeFromCart', ['cart_id' => $cartItem->rowId]) }}"
+                                                    class="product-remove mt-2">Remove</a>
                                             </td>
                                             <td class="cart-item-price text-end">
                                                 <div class="product-price">{{ $cartItem->price }}</div>
@@ -60,11 +62,6 @@
                                 </tbody>
                             </table>
                             <div class=" col-lg-5 mt-4 checkout-promo-code">
-                                <input class="input-promo-code" type="text" placeholder="Promo code" />
-                                <a href="checkout.html"
-                                    class="btn-apply-code position-relative btn-secondary text-uppercase mt-3">
-                                    Apply Promo Code
-                                </a>
                                 <a href="{{ route('shop') }}" class="position-relative btn-primary text-uppercase mt-3">
                                     Continue Shoping
                                 </a>
@@ -91,6 +88,14 @@
                                             <h4 class="subtotal-title">Total:</h4>
                                             <p class="subtotal-value">$1000.00</p>
                                         </div>
+                                        <div class="subtotal-item discount-box mt-3">
+                                            <input class="input-promo-code" type="text" name="promo_code" placeholder="Promo code" />
+                                            <a href="checkout.html"
+                                                class="btn btn-secondary text-uppercase">
+                                                Apply Code
+                                            </a>
+                                        </div>
+
                                         <p class="shipping_text">Shipping & taxes calculated at checkout</p>
                                         <div class="d-flex justify-content-center mt-4">
                                             <a href="checkout.html" class="position-relative btn-primary text-uppercase">

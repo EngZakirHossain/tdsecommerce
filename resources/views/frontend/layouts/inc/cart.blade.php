@@ -35,7 +35,8 @@
                                    </div>
                                    <div class="product-remove-area d-flex flex-column align-items-end">
                                        <div class="product-price">${{ $cartItem->price * $cartItem->qty }}</div>
-                                       <a href="#" class="product-remove">Remove</a>
+                                       <a href="{{ route('removeFromCart', ['cart_id' => $cartItem->rowId]) }}"
+                                           class="product-remove">Remove</a>
                                    </div>
                                </div>
                            </div>
