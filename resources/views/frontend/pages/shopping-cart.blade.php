@@ -52,10 +52,10 @@
                                                     class="product-remove mt-2">Remove</a>
                                             </td>
                                             <td class="cart-item-price text-end">
-                                                <div class="product-price">{{ $cartItem->price }}</div>
+                                                <div class="product-price">${{ $cartItem->price }}</div>
                                             </td>
                                             <td class="cart-item-price text-end">
-                                                <div class="product-price">{{ $cartItem->price * $cartItem->qty }}</div>
+                                                <div class="product-price">${{ $cartItem->price * $cartItem->qty }}</div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -79,21 +79,37 @@
                                             <h4 class="subtotal-title">Shipping:</h4>
                                             <p class="subtotal-value">$10.00</p>
                                         </div>
-                                        <div class="subtotal-item discount-box">
-                                            <h4 class="subtotal-title">Discount:</h4>
-                                            <p class="subtotal-value">$100.00</p>
-                                        </div>
-                                        <hr />
-                                        <div class="subtotal-item discount-box">
-                                            <h4 class="subtotal-title">Total:</h4>
-                                            <p class="subtotal-value">$1000.00</p>
-                                        </div>
+                                @if (Session::has('coupon'))
+                                <div class="subtotal-item discount-box">
+                                    <h4 class="subtotal-title">Discount:</h4>
+                                    <p class="subtotal-value">${{ Session::get('coupon')['discount_amount'] }}</p>
+                                </div>
+                                <hr />
+                                <div class="subtotal-item discount-box">
+                                    <h4 class="subtotal-title">Total:</h4>
+                                    <p class="subtotal-value">${{ Session::get('coupon')['balance']+10 }}</p>
+
+                                </div>
+                                @else
+                                <div class="subtotal-item discount-box">
+                                    <h4 class="subtotal-title">Total:</h4>
+                                    <p class="subtotal-value">${{ $subTotal+10 }}</p>
+                                </div>
+                                @endif
+
                                         <div class="subtotal-item discount-box mt-3">
-                                            <input class="input-promo-code" type="text" name="promo_code" placeholder="Promo code" />
-                                            <a href="checkout.html"
-                                                class="btn btn-secondary text-uppercase">
+                                            <form action="{{route('customer.couponApply')}}" method="POST">
+                                                @csrf
+                                            <input class="input-promo-code" type="text" name="coupon_name" placeholder="Promo code" />
+                                            <button type="submit" class="btn btn-secondary text-uppercase mt-2">
                                                 Apply Code
-                                            </a>
+                                            </button>
+                                            </form>
+                                            @if (Session::has('coupon'))
+                                <b> {{ Session::get('coupon')['name'] }} </b> is Applied
+                                <a href="{{ route('customer.couponremove', 'coupon_name') }}"
+                                            class="product-remove">Remove</a>
+                                @endif
                                         </div>
 
                                         <p class="shipping_text">Shipping & taxes calculated at checkout</p>
