@@ -79,37 +79,46 @@
                                             <h4 class="subtotal-title">Shipping:</h4>
                                             <p class="subtotal-value">$10.00</p>
                                         </div>
-                                @if (Session::has('coupon'))
-                                <div class="subtotal-item discount-box">
-                                    <h4 class="subtotal-title">Discount:</h4>
-                                    <p class="subtotal-value">${{ Session::get('coupon')['discount_amount'] }}</p>
-                                </div>
-                                <hr />
-                                <div class="subtotal-item discount-box">
-                                    <h4 class="subtotal-title">Total:</h4>
-                                    <p class="subtotal-value">${{ Session::get('coupon')['balance']+10 }}</p>
+                                        @if (Session::has('coupon'))
+                                            <div class="subtotal-item discount-box">
+                                                <h4 class="subtotal-title">Discount:</h4>
+                                                <p class="subtotal-value">
+                                                    ${{ Session::get('coupon')['discount_amount'] }}
+                                                </p>
 
-                                </div>
-                                @else
-                                <div class="subtotal-item discount-box">
-                                    <h4 class="subtotal-title">Total:</h4>
-                                    <p class="subtotal-value">${{ $subTotal+10 }}</p>
-                                </div>
-                                @endif
+                                            </div>
+                                            <hr />
+                                            <div class="subtotal-item discount-box">
+                                                <h4 class="subtotal-title">Total:</h4>
+                                                <p class="subtotal-value">
+                                                    <span
+                                                        class="card-price-compare text-decoration-line-through">${{ Session::get('coupon')['cart_total'] }}</span>
+                                                    ${{ Session::get('coupon')['balance'] }}
+
+                                                </p>
+                                            </div>
+                                        @else
+                                            <hr />
+                                            <div class="subtotal-item discount-box">
+                                                <h4 class="subtotal-title">Total:</h4>
+                                                <p class="subtotal-value">${{ $subTotal }}</p>
+                                            </div>
+                                        @endif
 
                                         <div class="subtotal-item discount-box mt-3">
-                                            <form action="{{route('customer.couponApply')}}" method="POST">
+                                            <form action="{{ route('customer.couponApply') }}" method="POST">
                                                 @csrf
-                                            <input class="input-promo-code" type="text" name="coupon_name" placeholder="Promo code" />
-                                            <button type="submit" class="btn btn-secondary text-uppercase mt-2">
-                                                Apply Code
-                                            </button>
+                                                <input class="input-promo-code" type="text" name="coupon_name"
+                                                    placeholder="Promo code" />
+                                                <button type="submit" class="btn btn-secondary text-uppercase mt-2">
+                                                    Apply Code
+                                                </button>
                                             </form>
                                             @if (Session::has('coupon'))
-                                <b> {{ Session::get('coupon')['name'] }} </b> is Applied
-                                <a href="{{ route('customer.couponremove', 'coupon_name') }}"
-                                            class="product-remove">Remove</a>
-                                @endif
+                                                <b> {{ Session::get('coupon')['name'] }} </b> is Applied
+                                                <a href="{{ route('customer.couponremove', 'coupon_name') }}"
+                                                    class="product-remove">Remove</a>
+                                            @endif
                                         </div>
 
                                         <p class="shipping_text">Shipping & taxes calculated at checkout</p>
