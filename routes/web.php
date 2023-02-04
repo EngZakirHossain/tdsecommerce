@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\CustomerController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\TestimonialControlller;
@@ -67,6 +68,13 @@ Route::prefix('')->group(function(){
         //coupon code apply
         Route::post('cart/apply-coupon', [CartController::class, 'couponApply'])->name('customer.couponApply');
         Route::get('cart/remove-coupon/{coupon_name}', [CartController::class, 'removeCoupon'])->name('customer.couponremove');
+
+         /*Checkout Page */
+        Route::get('checkout', [CheckoutController::class, 'checkoutPage'])->name('customer.checkoutpage');
+        Route::post('placeorder', [CheckoutController::class, 'placeOrder'])->name('customer.placeorder');
     });
+
+    /*AJAX Call */
+    Route::get('/upzilla/ajax/{district_id}', [CheckoutController::class, 'loadUpazillaAjax'])->name('loadupazila.ajax');
 
 });

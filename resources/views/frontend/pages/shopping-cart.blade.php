@@ -123,7 +123,8 @@
 
                                         <p class="shipping_text">Shipping & taxes calculated at checkout</p>
                                         <div class="d-flex justify-content-center mt-4">
-                                            <a href="checkout.html" class="position-relative btn-primary text-uppercase">
+                                            <a href="{{ route('customer.checkoutpage') }}"
+                                                class="position-relative btn-primary text-uppercase">
                                                 Procced to checkout
                                             </a>
                                         </div>
