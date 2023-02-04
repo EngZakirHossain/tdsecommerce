@@ -29,15 +29,6 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ti-pie-chart"></i>
-                        <span>Banner</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.banner.index') }}">All Banner</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ti-receipt"></i>
                         <span>Testimonial</span>
                     </a>
@@ -66,6 +57,29 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.products.index') }}">All Product</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-title">Order Detials</li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ti-package"></i>
+                        <span>Orders</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.order.list') }}">All Order</a></li>
+                    </ul>
+                </li>
+                <li class="menu-title">Customer Detials</li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ti-package"></i>
+                        <span>Customers</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.customer.list') }}">All Customers</a></li>
                     </ul>
                 </li>
 

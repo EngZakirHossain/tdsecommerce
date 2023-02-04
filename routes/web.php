@@ -9,12 +9,13 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\CustomerController;
+use App\Http\Controllers\Backend\CustomerController as BackendCustomerController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\TestimonialControlller;
 use App\Http\Controllers\Frontend\Auth\RegisterController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,13 +36,18 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'],function(){
     Route::middleware(['auth','is_admin'])->group(function(){
         Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
         Route::get('logout',[LoginController::class, 'logout'])->name('logout');
+
+        Route::resource('/category',CategoryController::class);
+        Route::resource('/subCategory',SubCategoryController::class);
+        Route::resource('/testimonial',TestimonialControlller::class);
+        Route::resource('/products',ProductController::class);
+        Route::resource('/banner',BannerController::class);
+        Route::resource('/coupon',CouponController::class);
+
+        Route::get('/order-list',[OrderController::class,'index'])->name('order.list');
+        Route::get('/customer-list',[BackendCustomerController::class,'index'])->name('customer.list');
     });
-    Route::resource('/category',CategoryController::class);
-    Route::resource('/subCategory',SubCategoryController::class);
-    Route::resource('/testimonial',TestimonialControlller::class);
-    Route::resource('/products',ProductController::class);
-    Route::resource('/banner',BannerController::class);
-    Route::resource('/coupon',CouponController::class);
+
 });
 
 
