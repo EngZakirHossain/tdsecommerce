@@ -9,4 +9,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Billing extends Model
 {
     use HasFactory,SoftDeletes;
+    protected $guarded =['id'];
 }
