@@ -121,7 +121,7 @@
                                             <div class="col-lg-12 col-md-12 col-12">
                                                 <fieldset>
                                                     <label class="label">Order Note</label>
-                                                    <input type="text" name="note" />
+                                                    <input type="text" name="order_notes" />
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -131,7 +131,7 @@
                                 <div class="shipping-address-area billing-area">
                                     <h2 class="shipping-address-heading pb-1">Payment Method</h2>
                                     <div class="form-checkbox d-flex align-items-center mt-4">
-                                        <input class="form-check-input mt-0" type="checkbox" name="payment_method">
+                                        <input class="form-check-input mt-0" type="checkbox" name="payment_method" value="COD" checked>
                                         <label class="form-check-label ms-2">
                                             Cash On Delivery
                                         </label>
