@@ -83,6 +83,18 @@
                     </ul>
                 </li>
 
+                <li class="menu-title">Setting </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ti-package"></i>
+                        <span>Setting</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.setting.index') }}">Setting</a></li>
+                    </ul>
+                </li>
+
             </ul>
         </div>
         <!-- Sidebar -->

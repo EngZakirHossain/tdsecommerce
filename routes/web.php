@@ -2,20 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\CustomerController;
-use App\Http\Controllers\Backend\CustomerController as BackendCustomerController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\TestimonialControlller;
 use App\Http\Controllers\Frontend\Auth\RegisterController;
+use App\Http\Controllers\Backend\CustomerController as BackendCustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +47,9 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'],function(){
 
         Route::get('/order-list',[OrderController::class,'index'])->name('order.list');
         Route::get('/customer-list',[BackendCustomerController::class,'index'])->name('customer.list');
+        //setting
+        Route::get('/setting',[SettingController::class,'index'])->name('setting.index');
+        Route::post('/setting-store',[SettingController::class,'store'])->name('setting.store');
     });
 
 });
