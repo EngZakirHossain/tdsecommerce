@@ -118,7 +118,8 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div>
-                                <div id="chart-with-area" class="ct-chart earning ct-golden-section">
+                                <div id="line-chart-filled" class="earning ct-golden-section">
+
                                 </div>
                             </div>
                         </div>
@@ -509,3 +510,14 @@
     <!-- end row -->
 
 @endsection
+@push('admin_script')
+    <script>
+        new Chartist.Line('#line-chart-filled', {
+            labels: [2022, 2023, 2024, 2025, 2026, 2027,2028,2029,2030],
+            series: [<?php echo json_encode($order_yearwise)?>]
+        }, {
+            low: 0,
+            showArea: true
+        });
+    </script>
+@endpush

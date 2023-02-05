@@ -23,11 +23,12 @@ class DashboardController extends Controller
         $this_month_revenue = Order::whereMonth('created_at', '=', Carbon::now()->month)->sum('total');
 
 
-        $order_on_2020 = Order::whereBetween('created_at', ['2020-01-01', '2020-12-31'])->count();
-        $order_on_2021 = Order::whereBetween('created_at', ['2021-01-01', '2021-12-31'])->count();
         $order_on_2022 = Order::whereBetween('created_at', ['2022-01-01', '2022-12-31'])->count();
+        $order_on_2023 = Order::whereBetween('created_at', ['2023-01-01', '2023-12-31'])->count();
+        $order_on_2024 = Order::whereBetween('created_at', ['2024-01-01', '2024-12-31'])->count();
+        $order_on_2025 = Order::whereBetween('created_at', ['2025-01-01', '2025-12-31'])->count();
 
-        $order_yearwise = array($order_on_2020, $order_on_2021, $order_on_2022);
+        $order_yearwise = array($order_on_2022, $order_on_2023, $order_on_2024,$order_on_2025);
         return view('backend.pages.dashboard',compact(
             'total_earning',
             'total_order_count',
