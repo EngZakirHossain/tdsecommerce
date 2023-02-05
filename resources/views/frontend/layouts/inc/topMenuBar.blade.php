@@ -1,5 +1,6 @@
     @php
         $cartItems = Cart::content();
+        $logo = \App\Models\Setting::where('key', 'logo')->first()->value;
     @endphp
     <header class="sticky-header border-btm-black header-1">
         <div class="header-bottom">
@@ -8,7 +9,8 @@
                     <div class="col-lg-3 col-md-4 col-4">
                         <div class="header-logo">
                             <a href="{{ route('home') }}" class="logo-main ">
-                                <img src="{{ asset('assets/frontend') }}/img/logo.png" loading="lazy" alt="bisum">
+                                <img src="{{ asset('storage/uploads/company') }}/{{ $logo }}" loading="lazy"
+                                    alt="" onerror="this.src='{{ asset('assets/backend') }}/images/logo.png'">
                             </a>
                         </div>
                     </div>

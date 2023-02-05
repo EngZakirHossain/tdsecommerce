@@ -1,3 +1,6 @@
+   @php
+       $logo = \App\Models\Setting::where('key', 'logo')->first()->value;
+   @endphp
    <footer class="mt-100 overflow-hidden footer-style-2">
        <div class="footer-top bg-5">
            <div class="container">
@@ -71,8 +74,11 @@
                        <div class="col-xl-4 col-lg-5 col-md-6 col-12 footer-widget">
                            <div class="footer-widget-inner">
                                <h4 class="footer-logo">
-                                   <a href="/"><img src="{{ asset('assets/frontend') }}/img/logo-accent.png"
-                                           alt="bisum"></a>
+                                   <a href="{{ route('home') }}" class="logo-main ">
+                                       <img src="{{ asset('storage/uploads/company') }}/{{ $logo }}"
+                                           loading="lazy" alt=""
+                                           onerror="this.src='{{ asset('assets/backend') }}/images/logo.png'">
+                                   </a>
                                </h4>
                                <div class="footer-newsletter">
                                    <p class="footer-text mb-3">Stay up to date with all the news.</p>
@@ -85,7 +91,8 @@
                                        </form>
                                    </div>
                                    <div class="footer-social-wrapper">
-                                       <ul class="footer-social list-unstyled d-flex align-items-center flex-wrap mb-0">
+                                       <ul
+                                           class="footer-social list-unstyled d-flex align-items-center flex-wrap mb-0">
                                            <li class="footer-social-item">
                                                <a href="#">
                                                    <svg class="icon icon-twitter" width="20" height="20"
@@ -158,7 +165,7 @@
                        <li class="footer-menu-item"><a href="about-us.html">Privacy policy</a></li>
                        <li class="footer-menu-item"><a href="about-us.html">Terms & Conditions</a></li>
                    </ul>
-                   <p class="copyright footer-text">©<span class="current-year"></span> Spree Themes.</p>
+                   <p class="copyright footer-text">©<span class="current-year"></span> Trimatric Design.</p>
                </div>
            </div>
        </div>

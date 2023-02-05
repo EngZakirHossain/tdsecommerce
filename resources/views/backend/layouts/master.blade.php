@@ -4,10 +4,11 @@
 <head>
 
     <meta charset="utf-8">
-    <title>TdSCom | @yield('title')</title>
+    @php($name = \App\Models\Setting::where('key', 'name')->first()->value)
+    <title>{{ $name }} | @yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="TDS Ecommerce || " name="description">
-    <meta content="Themesbrand" name="author">
+    <meta content="{{ $name }} Ecommerce || " name="description">
+    <meta content="{{ $name }}" name="author">
 
     @include('backend.layouts.inc.style')
 

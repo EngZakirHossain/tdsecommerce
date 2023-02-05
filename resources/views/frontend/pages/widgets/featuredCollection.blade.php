@@ -23,7 +23,7 @@
                                  <div class="product-card-action product-card-action-2">
                                      <a href="#quickview-modal{{ $product->slug }}" class="quickview-btn btn-primary"
                                          data-bs-toggle="modal">QUICKVIEW</a>
-                                     <a href="#" class="addtocart-btn btn-primary">ADD TO CART</a>
+                                     <a href="{{ route('productDetails.page',$product->slug) }}" class="addtocart-btn btn-primary">ADD TO CART</a>
                                  </div>
 
                                  <a href="wishlist.html" class="wishlist-btn card-wishlist">
